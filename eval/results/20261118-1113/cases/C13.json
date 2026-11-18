@@ -1,0 +1,154 @@
+{
+  "case": {
+    "id": "C13",
+    "title": "Password reset link expired",
+    "kind": "representative",
+    "channel": "email",
+    "from_name": "Fatima Zahra",
+    "from_address": "fatima@henna-house.example",
+    "subject": "Can't log in - reset link not working",
+    "text": "Hi, I clicked 'forgot password' yesterday evening but only opened the email this morning and now the link says it's expired. How do I get back in? I have appointments to check today.\n\nThanks, Fatima",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "account_access",
+      "urgency": "P3",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-login-2fa"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "urgency": [
+          "P2",
+          "P3"
+        ]
+      }
+    },
+    "why": "Everyday account-access question fully answered by the KB (link expires after 60 minutes, request a new one)."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 3654,
+      "output": {
+        "qualifies": true,
+        "category": "account_access",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": null,
+        "reply": "Hi Fatima,\n\nThanks for getting in touch. Password reset links expire after 60 minutes and can only be used once, so the link from yesterday evening will no longer work. You can get back in by requesting a new one:\n\n1. On the sign-in page, click \"Forgot password?\"\n2. Enter the email address you use for Slotwise.\n3. Open the new email and click the reset link within 60 minutes.\n\nIf the email doesn't arrive within 5 minutes, please check your spam folder. Also note that after 5 failed sign-in attempts the account is locked for 15 minutes, so if that happens just wait a little before trying again.\n\nIf you are a staff member rather than the account owner, the owner can send you a reset from Staff → [your name] → Access → Send password reset.\n\nIf you still can't get in after trying this, reply to this email and we'll help you further.\n\nBest regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.01528,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "account_access",
+          "urgency": "P3",
+          "team": "support",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hi Fatima,\n\nThanks for getting in touch. Password reset links expire after 60 minutes and can only be used once, so the link from yesterday evening will no longer work. You can get back in by requesting a new one:\n\n1. On the sign-in page, click \"Forgot password?\"\n2. Enter the email address you use for Slotwise.\n3. Open the new email and click the reset link within 60 minutes.\n\nIf the email doesn't arrive within 5 minutes, please check your spam folder. Also note that after 5 failed sign-in attempts the account is locked for 15 minutes, so if that happens just wait a little before trying again.\n\nIf you are a staff member rather than the account owner, the owner can send you a reset from Staff → [your name] → Access → Send password reset.\n\nIf you still can't get in after trying this, reply to this email and we'll help you further.\n\nBest regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5835,
+          "output": 361,
+          "cost_usd": 0.01528
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 6112,
+      "output": {
+        "qualifies": true,
+        "category": "account_access",
+        "urgency": "P2",
+        "team": "support",
+        "escalated": false,
+        "lane": "reply",
+        "reply": "Hi Fatima,\n\nSorry for the trouble. The reset link expires after 60 minutes and can only be used once, so you'll need to request a new one. Here's how:\n\n1. On the sign-in page, click \"Forgot password?\"\n2. Enter the email address you use for Slotwise.\n3. Open the new email from Slotwise right away and click the reset link.\n\nIf the email doesn't arrive within 5 minutes, check your spam folder. Also, after 5 failed sign-in attempts the account is locked for 15 minutes, so if that happens just wait a little before trying again.\n\nIf you're a staff member, your account owner can also send you a password reset from the Staff section.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-login-2fa"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.011546,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "account_access",
+        "urgency": "P2",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer cannot log in because the password reset link expired and needs to regain access to check today's appointments.",
+        "team": "support",
+        "lane": "reply",
+        "reasons": [
+          "Grounded draft, no flags, high confidence"
+        ],
+        "draft": "Hi Fatima,\n\nSorry for the trouble. The reset link expires after 60 minutes and can only be used once, so you'll need to request a new one. Here's how:\n\n1. On the sign-in page, click \"Forgot password?\"\n2. Enter the email address you use for Slotwise.\n3. Open the new email from Slotwise right away and click the reset link.\n\nIf the email doesn't arrive within 5 minutes, check your spam folder. Also, after 5 failed sign-in attempts the account is locked for 15 minutes, so if that happens just wait a little before trying again.\n\nIf you're a staff member, your account owner can also send you a password reset from the Staff section.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-login-2fa",
+            "title": "Login problems, password reset and two-factor authentication"
+          }
+        ],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011546,
+        "ms": 6112
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

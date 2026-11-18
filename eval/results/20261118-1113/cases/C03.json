@@ -1,0 +1,162 @@
+{
+  "case": {
+    "id": "C03",
+    "title": "Two issues in one message (reminders + invoice)",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Priya Nair",
+    "from_address": "priya@lotusyoga-studio.example",
+    "subject": "Reminders + invoice",
+    "text": "Hello,\n\nTwo things:\n\n1) Since Monday our clients aren't getting their SMS reminders. A few people missed classes and said they never got a text. Nothing changed on our side as far as I know.\n\n2) Also, our accountant needs the invoices for August and September with our company name (Lotus Yoga Studio Ltd) and VAT number on them. Where can I get those?\n\nThanks,\nPriya",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P3",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-reminders",
+        "kb-plans-billing"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "how_to",
+          "billing"
+        ]
+      }
+    },
+    "why": "A good reply addresses both questions (reminders checklist + invoices/billing details). The KB hit should include at least one of the two articles."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 6608,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": null,
+        "reply": "Hello Priya,\n\nThanks for your message. Here is help with both points.\n\n1) SMS reminders not sending\nPlease check these common causes:\n- Message credits: SMS reminders use message credits, and when they run out reminders pause until you top up. Check your balance in Settings → Billing → Message credits. Since this started on a specific day, this is the most likely cause.\n- Phone number format: numbers must include the country code (e.g. +44 7700 900000). Numbers without one are skipped.\n- Client opt-out: if a client replied STOP, they won't receive further reminders. This shows on their profile.\n- Booking timing: appointments booked inside the reminder window (e.g. 1 hour before with a 24-hour reminder) won't get that reminder.\n\nYou can see the status of each reminder (sent, failed, or skipped, and why) in Reports → Reminder log. Also check status.slotwise.test for any incidents. If credits are fine and the log shows reminders failing without a clear reason, reply with a couple of example client names and appointment times and we'll investigate further.\n\n2) Invoices with company name and VAT number\nAll invoices are in Settings → Billing → Invoices, where you can click an invoice to download the PDF. To add your company name (Lotus Yoga Studio Ltd) and VAT number, edit Billing details. Please note that this only applies to future invoices. For corrected copies of past invoices (August and September), please reply with the invoice numbers and our billing team will help you with that.\n\nBest regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.017474,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "bug",
+          "urgency": "P3",
+          "team": "support",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hello Priya,\n\nThanks for your message. Here is help with both points.\n\n1) SMS reminders not sending\nPlease check these common causes:\n- Message credits: SMS reminders use message credits, and when they run out reminders pause until you top up. Check your balance in Settings → Billing → Message credits. Since this started on a specific day, this is the most likely cause.\n- Phone number format: numbers must include the country code (e.g. +44 7700 900000). Numbers without one are skipped.\n- Client opt-out: if a client replied STOP, they won't receive further reminders. This shows on their profile.\n- Booking timing: appointments booked inside the reminder window (e.g. 1 hour before with a 24-hour reminder) won't get that reminder.\n\nYou can see the status of each reminder (sent, failed, or skipped, and why) in Reports → Reminder log. Also check status.slotwise.test for any incidents. If credits are fine and the log shows reminders failing without a clear reason, reply with a couple of example client names and appointment times and we'll investigate further.\n\n2) Invoices with company name and VAT number\nAll invoices are in Settings → Billing → Invoices, where you can click an invoice to download the PDF. To add your company name (Lotus Yoga Studio Ltd) and VAT number, edit Billing details. Please note that this only applies to future invoices. For corrected copies of past invoices (August and September), please reply with the invoice numbers and our billing team will help you with that.\n\nBest regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5897,
+          "output": 568,
+          "cost_usd": 0.017474
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 9732,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P2",
+        "team": "engineering",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Priya,\n\nSorry to hear about the missed classes. Here's how to check both things.\n\n1) SMS reminders: Open Reports → Reminder log to see each reminder's status (sent, failed, or skipped and why). Common causes are: message credits have run out (check Settings → Billing → Message credits; reminders pause until you top up), the client replied STOP, the phone number has no country code (e.g. +44 7700 900000), or the appointment was booked inside the reminder window. If the log doesn't explain it, reply with an example client and appointment and a teammate will follow up to look into it.\n\n2) Invoices: All invoices are in Settings → Billing → Invoices, where you can download PDFs. You can add your company name and VAT number under Billing details, but that only applies to future invoices. For corrected copies of the August and September invoices, please contact our billing team. I've noted your request so they can pick it up.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-reminders",
+          "kb-plans-billing"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.013356,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P2",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "SMS reminders not delivered since Monday, causing missed classes; also asks how to get August and September invoices with company name and VAT number.",
+        "team": "engineering",
+        "lane": "review",
+        "reasons": [
+          "Model confidence is medium",
+          "Model suggests a human look: SMS delivery failure needs investigation of the account's messaging logs; invoice reissue with company name and VAT number may need billing team to edit past invoices."
+        ],
+        "draft": "Hi Priya,\n\nSorry to hear about the missed classes. Here's how to check both things.\n\n1) SMS reminders: Open Reports → Reminder log to see each reminder's status (sent, failed, or skipped and why). Common causes are: message credits have run out (check Settings → Billing → Message credits; reminders pause until you top up), the client replied STOP, the phone number has no country code (e.g. +44 7700 900000), or the appointment was booked inside the reminder window. If the log doesn't explain it, reply with an example client and appointment and a teammate will follow up to look into it.\n\n2) Invoices: All invoices are in Settings → Billing → Invoices, where you can download PDFs. You can add your company name and VAT number under Billing details, but that only applies to future invoices. For corrected copies of the August and September invoices, please contact our billing team. I've noted your request so they can pick it up.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-reminders",
+            "title": "Set up SMS and WhatsApp appointment reminders"
+          },
+          {
+            "id": "kb-plans-billing",
+            "title": "Plans, billing, invoices and refund requests"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.013356,
+        "ms": 9732
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": false,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "case": {
+    "id": "C17",
+    "title": "Calm cancellation request",
+    "kind": "representative",
+    "channel": "email",
+    "from_name": "George Papadopoulos",
+    "from_address": "george@zenmassage.example",
+    "subject": "Cancelling",
+    "text": "Hello, I'm retiring at the end of the year and closing my massage practice, so I'd like to cancel my Slotwise subscription. Thank you for the good service over the years. What happens to my client list?\n\nGeorge",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "cancellation",
+      "urgency": "P3",
+      "lane": "reply",
+      "team": "success",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-cancel-subscription"
+      ],
+      "forbidden_in_reply": [
+        "free month",
+        "discount"
+      ],
+      "language": "en",
+      "accept": {
+        "team": [
+          "success",
+          "billing",
+          "support"
+        ]
+      }
+    },
+    "why": "Cancellation is self-serve; not angry, so no escalation. Reply should explain steps, export, and 30-day data retention."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 3889,
+      "output": {
+        "qualifies": true,
+        "category": "cancellation",
+        "urgency": "P4",
+        "team": "support",
+        "escalated": false,
+        "lane": null,
+        "reply": "Hello George,\n\nCongratulations on your retirement, and thank you for being with us over the years.\n\nYou can cancel yourself at any time, with no cancellation fee and no notice period:\n1. Sign in as the account owner (staff accounts cannot cancel).\n2. Go to Settings → Billing → Cancel subscription.\n3. Choose a reason (optional) and confirm.\n\nWhat happens to your client list and data:\n- Your account stays active until the end of the current billing period, and you won't be charged again.\n- Your booking page goes offline at the end of that period and no more reminders are sent.\n- Your data, including your client list, is kept for 30 days after the period ends. If you reactivate within those 30 days, everything is restored as it was. After 30 days it is permanently deleted.\n\nBefore you cancel, we recommend exporting your client list and appointment history: go to Settings → Data → Export, choose clients, appointments, payments or everything, and click Create export. You will receive an email with a download link (CSV files in a ZIP) within about 15 minutes, valid for 7 days. Only the owner and admins can export.\n\nIt's also a good idea to let your clients know your booking link will stop working. Please note that cancelling does not trigger a refund of the current billing period.\n\nWishing you all the best for your retirement.\n\nKind regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.016776,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "cancellation",
+          "urgency": "P4",
+          "team": "support",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hello George,\n\nCongratulations on your retirement, and thank you for being with us over the years.\n\nYou can cancel yourself at any time, with no cancellation fee and no notice period:\n1. Sign in as the account owner (staff accounts cannot cancel).\n2. Go to Settings → Billing → Cancel subscription.\n3. Choose a reason (optional) and confirm.\n\nWhat happens to your client list and data:\n- Your account stays active until the end of the current billing period, and you won't be charged again.\n- Your booking page goes offline at the end of that period and no more reminders are sent.\n- Your data, including your client list, is kept for 30 days after the period ends. If you reactivate within those 30 days, everything is restored as it was. After 30 days it is permanently deleted.\n\nBefore you cancel, we recommend exporting your client list and appointment history: go to Settings → Data → Export, choose clients, appointments, payments or everything, and click Create export. You will receive an email with a download link (CSV files in a ZIP) within about 15 minutes, valid for 7 days. Only the owner and admins can export.\n\nIt's also a good idea to let your clients know your booking link will stop working. Please note that cancelling does not trigger a refund of the current billing period.\n\nWishing you all the best for your retirement.\n\nKind regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5828,
+          "output": 512,
+          "cost_usd": 0.016776
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 6083,
+      "output": {
+        "qualifies": true,
+        "category": "cancellation",
+        "urgency": "P3",
+        "team": "billing",
+        "escalated": false,
+        "lane": "reply",
+        "reply": "Hello George,\n\nCongratulations on your retirement, and thank you for being with us all these years.\n\nTo cancel, sign in as the account owner and go to Settings → Billing → Cancel subscription. There is no cancellation fee or notice period. Your account stays active until the end of the current billing period, and you won't be charged again.\n\nAs for your client list: your data is kept for 30 days after the period ends, and you can reactivate within that time to have everything restored. After 30 days, the account data is permanently deleted. Before then, you can export your client list and appointment history from Settings → Data → Export. You'll get an email with a download link (a ZIP of CSV files) within about 15 minutes, valid for 7 days.\n\nPlease also let your clients know where to book, as your booking link will stop working when the period ends.\n\nIf you want your account and all its data deleted sooner, email us and our privacy team will handle the request.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-cancel-subscription",
+          "kb-data-privacy"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.012352,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "cancellation",
+        "urgency": "P3",
+        "sentiment": "positive",
+        "language": "en",
+        "summary": "Customer is retiring and closing his practice at year end; wants to cancel subscription and asks what happens to his client list.",
+        "team": "billing",
+        "lane": "reply",
+        "reasons": [
+          "Grounded draft, no flags, high confidence"
+        ],
+        "draft": "Hello George,\n\nCongratulations on your retirement, and thank you for being with us all these years.\n\nTo cancel, sign in as the account owner and go to Settings → Billing → Cancel subscription. There is no cancellation fee or notice period. Your account stays active until the end of the current billing period, and you won't be charged again.\n\nAs for your client list: your data is kept for 30 days after the period ends, and you can reactivate within that time to have everything restored. After 30 days, the account data is permanently deleted. Before then, you can export your client list and appointment history from Settings → Data → Export. You'll get an email with a download link (a ZIP of CSV files) within about 15 minutes, valid for 7 days.\n\nPlease also let your clients know where to book, as your booking link will stop working when the period ends.\n\nIf you want your account and all its data deleted sooner, email us and our privacy team will handle the request.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-cancel-subscription",
+            "title": "Cancel your Slotwise subscription"
+          },
+          {
+            "id": "kb-data-privacy",
+            "title": "Export or delete your data (GDPR requests)"
+          }
+        ],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.012352,
+        "ms": 6083
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

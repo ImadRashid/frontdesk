@@ -1,0 +1,111 @@
+{
+  "case": {
+    "id": "C11",
+    "title": "Vague 'it doesn't work' on WhatsApp",
+    "kind": "edge",
+    "channel": "whatsapp",
+    "from_name": "Bilal",
+    "from_address": "+92 300 0000001",
+    "subject": null,
+    "text": "it doesnt work",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P3",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "other"
+        ]
+      }
+    },
+    "why": "Too little information to answer. Should qualify but go to review; a good draft asks a clarifying question instead of guessing an answer."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 5326,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Bilal, sorry to hear something isn't working. Could you tell us a bit more so we can help? Please let us know:\n- which feature or page isn't working (for example the booking page, Google Calendar sync, or the dashboard),\n- what you see when it fails, ideally with a screenshot of any error,\n- when it started, and whether it affects everyone or only some staff or services.\n\nIn the meantime, you can check live status at status.slotwise.test. It's also worth trying a different browser or a private window, and clearing your cache. Once we have more details, a teammate will follow up.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-status-outages"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.010724,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P3",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "Customer reports that something 'doesn't work' with no details about the feature or error.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "The help center doesn’t answer this question. Answer it, then save the answer to the help center.",
+          "Model has low confidence in this draft",
+          "Model confidence is low"
+        ],
+        "draft": "Hi Bilal, sorry to hear something isn't working. Could you tell us a bit more so we can help? Please let us know:\n- which feature or page isn't working (for example the booking page, Google Calendar sync, or the dashboard),\n- what you see when it fails, ideally with a screenshot of any error,\n- when it started, and whether it affects everyone or only some staff or services.\n\nIn the meantime, you can check live status at status.slotwise.test. It's also worth trying a different browser or a private window, and clearing your cache. Once we have more details, a teammate will follow up.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-status-outages",
+            "title": "Service status, outages and incident updates"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "no_source",
+            "text": "The help center doesn’t answer this question. Answer it, then save the answer to the help center."
+          },
+          {
+            "kind": "low_confidence",
+            "text": "Model has low confidence in this draft"
+          }
+        ],
+        "confidence": "low",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.010724,
+        "ms": 5325
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

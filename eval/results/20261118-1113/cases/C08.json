@@ -1,0 +1,146 @@
+{
+  "case": {
+    "id": "C08",
+    "title": "GDPR deletion request",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Elena Rossi",
+    "from_address": "elena@studiobellezza.example",
+    "subject": "GDPR - request to delete all our data",
+    "text": "Dear Slotwise,\n\nUnder Article 17 GDPR I am requesting the erasure of all personal data you hold about me and about my salon Studio Bellezza (account email elena@studiobellezza.example), including our client list and appointment history. We closed the salon last month.\n\nPlease confirm once this is done.\n\nElena Rossi",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "data_privacy",
+      "urgency": "P3",
+      "lane": "escalated",
+      "team": "privacy",
+      "must_escalate": true,
+      "injection": false,
+      "kb": [
+        "kb-data-privacy"
+      ],
+      "forbidden_in_reply": [
+        "has been deleted",
+        "we have deleted",
+        "data is now deleted",
+        "deleted your data"
+      ],
+      "language": "en"
+    },
+    "why": "Legal privacy request: routes to the privacy team; support must not delete or confirm deletion."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 3579,
+      "output": {
+        "qualifies": true,
+        "category": "data_privacy",
+        "urgency": "P2",
+        "team": "privacy",
+        "escalated": true,
+        "lane": null,
+        "reply": "Dear Elena,\n\nThank you for your message, and we're sorry to hear that Studio Bellezza has closed.\n\nWe have received your request for erasure under Article 17 GDPR, covering your personal data and the data of your salon account (including your client list and appointment history). Requests like this are handled by our privacy team, and I have passed yours to them. Formal GDPR requests are completed within 30 days. The privacy team may contact you to verify that you are the account owner before they proceed.\n\nPlease note that I can't confirm a deletion date or confirm that the deletion is complete. The privacy team will let you know once your request has been processed.\n\nIf you would like to keep a copy of your client list or appointment history, you can create an export in Settings → Data → Export before the deletion is carried out. Please do this soon, as erased data cannot be restored.\n\nKind regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.015232,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "data_privacy",
+          "urgency": "P2",
+          "team": "privacy",
+          "escalate": true,
+          "language": "en",
+          "reply": "Dear Elena,\n\nThank you for your message, and we're sorry to hear that Studio Bellezza has closed.\n\nWe have received your request for erasure under Article 17 GDPR, covering your personal data and the data of your salon account (including your client list and appointment history). Requests like this are handled by our privacy team, and I have passed yours to them. Formal GDPR requests are completed within 30 days. The privacy team may contact you to verify that you are the account owner before they proceed.\n\nPlease note that I can't confirm a deletion date or confirm that the deletion is complete. The privacy team will let you know once your request has been processed.\n\nIf you would like to keep a copy of your client list or appointment history, you can create an export in Settings → Data → Export before the deletion is carried out. Please do this soon, as erased data cannot be restored.\n\nKind regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5876,
+          "output": 348,
+          "cost_usd": 0.015232
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 2619,
+      "output": {
+        "qualifies": true,
+        "category": "data_privacy",
+        "urgency": "P2",
+        "team": "privacy",
+        "escalated": true,
+        "lane": "escalated",
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [],
+        "pii_masked": 0,
+        "cost_usd": 0.004966,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "data_privacy",
+        "urgency": "P2",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer requests GDPR Article 17 erasure of all personal data, including client list and appointment history, for closed salon Studio Bellezza.",
+        "team": "privacy",
+        "lane": "escalated",
+        "reasons": [
+          "Data-privacy request — privacy team only"
+        ],
+        "draft": null,
+        "sources": [],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.004966,
+        "ms": 2619
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": false,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

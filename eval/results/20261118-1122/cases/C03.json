@@ -1,0 +1,110 @@
+{
+  "case": {
+    "id": "C03",
+    "title": "Two issues in one message (reminders + invoice)",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Priya Nair",
+    "from_address": "priya@lotusyoga-studio.example",
+    "subject": "Reminders + invoice",
+    "text": "Hello,\n\nTwo things:\n\n1) Since Monday our clients aren't getting their SMS reminders. A few people missed classes and said they never got a text. Nothing changed on our side as far as I know.\n\n2) Also, our accountant needs the invoices for August and September with our company name (Lotus Yoga Studio Ltd) and VAT number on them. Where can I get those?\n\nThanks,\nPriya",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P3",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-reminders",
+        "kb-plans-billing"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "how_to",
+          "billing"
+        ]
+      }
+    },
+    "why": "A good reply addresses both questions (reminders checklist + invoices/billing details). The KB hit should include at least one of the two articles."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 7775,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P2",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Priya,\n\nSorry about the missed classes. Here's what I can tell you.\n\n1) SMS reminders: the most common reasons they stop are: no message credits left (check Settings → Billing → Message credits; reminders pause when credits run out), a client replied STOP, phone numbers missing the country code (e.g. +44 7700 900000), or the appointment was booked inside the reminder window. Reports → Reminder log shows each reminder's status (sent, failed, skipped) and the reason, which should help pinpoint the cause. If none of these explain it, reply with what the log shows and a teammate will follow up.\n\n2) Invoices: all invoices are in Settings → Billing → Invoices, where you can download PDFs. Adding your company name and VAT number under Billing details only applies to future invoices. For corrected copies of August and September, please contact the billing team; I'll pass your request along.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-plans-billing",
+          "kb-reminders"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.013694,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P2",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "SMS reminders not delivered since Monday causing missed appointments; also asks how to get August and September invoices with company name and VAT number.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "Model confidence is medium",
+          "Model suggests a human look: SMS delivery failure for one account likely needs investigation of account/messaging logs; reissuing past invoices with updated company details and VAT number may require billing staff."
+        ],
+        "draft": "Hi Priya,\n\nSorry about the missed classes. Here's what I can tell you.\n\n1) SMS reminders: the most common reasons they stop are: no message credits left (check Settings → Billing → Message credits; reminders pause when credits run out), a client replied STOP, phone numbers missing the country code (e.g. +44 7700 900000), or the appointment was booked inside the reminder window. Reports → Reminder log shows each reminder's status (sent, failed, skipped) and the reason, which should help pinpoint the cause. If none of these explain it, reply with what the log shows and a teammate will follow up.\n\n2) Invoices: all invoices are in Settings → Billing → Invoices, where you can download PDFs. Adding your company name and VAT number under Billing details only applies to future invoices. For corrected copies of August and September, please contact the billing team; I'll pass your request along.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-plans-billing",
+            "title": "Plans, billing, invoices and refund requests"
+          },
+          {
+            "id": "kb-reminders",
+            "title": "Set up SMS and WhatsApp appointment reminders"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.013694,
+        "ms": 7775
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

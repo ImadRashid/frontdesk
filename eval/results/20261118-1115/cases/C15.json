@@ -1,0 +1,107 @@
+{
+  "case": {
+    "id": "C15",
+    "title": "How to add a new staff member",
+    "kind": "representative",
+    "channel": "whatsapp",
+    "from_name": "Sofia Martins",
+    "from_address": "+351 910 000 000",
+    "subject": null,
+    "text": "Hi! We just hired a new hairdresser, Carla. How do I add her so clients can book with her? And can I stop her from seeing the reports?",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "how_to",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-staff-permissions"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "urgency": [
+          "P3",
+          "P4"
+        ]
+      }
+    },
+    "why": "Simple how-to covered by the staff & permissions article (roles: Staff cannot see reports)."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 5147,
+      "output": {
+        "qualifies": true,
+        "category": "how_to",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email, and choose a role.\n3. Set her working hours and the services she offers.\n4. Click Send invitation. She'll get an email to set a password (invitations expire after 7 days, and you can resend from her staff page).\n\nFor reports: the Staff role sees and manages only her own calendar and clients and can't change settings. Front desk can book for all staff but can't see reports or settings. You can change a role any time in Staff → Carla → Access → Role.\n\nTo let clients book with her, make sure the services she offers are assigned to her. Services with no staff assigned don't appear on your booking page. Also, the number of staff calendars depends on your plan, so you may be prompted to upgrade if you've hit the limit.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-staff-permissions",
+          "kb-booking-page"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.011986,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "how_to",
+        "urgency": "P3",
+        "sentiment": "positive",
+        "language": "en",
+        "summary": "Customer wants to add a new staff member to the booking page and restrict her access to reports.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "Model confidence is medium"
+        ],
+        "draft": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email, and choose a role.\n3. Set her working hours and the services she offers.\n4. Click Send invitation. She'll get an email to set a password (invitations expire after 7 days, and you can resend from her staff page).\n\nFor reports: the Staff role sees and manages only her own calendar and clients and can't change settings. Front desk can book for all staff but can't see reports or settings. You can change a role any time in Staff → Carla → Access → Role.\n\nTo let clients book with her, make sure the services she offers are assigned to her. Services with no staff assigned don't appear on your booking page. Also, the number of staff calendars depends on your plan, so you may be prompted to upgrade if you've hit the limit.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-staff-permissions",
+            "title": "Add staff members and manage permissions"
+          },
+          {
+            "id": "kb-booking-page",
+            "title": "Set up and share your online booking page"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011986,
+        "ms": 5147
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": false
+      },
+      "unsafe_hits": []
+    }
+  }
+}

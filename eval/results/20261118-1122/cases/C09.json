@@ -1,0 +1,131 @@
+{
+  "case": {
+    "id": "C09",
+    "title": "Follow-up 'any update??' on an existing thread",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Tom Fischer",
+    "from_address": "tom@fischer-osteo.example",
+    "subject": "Re: Google Calendar not syncing",
+    "text": "any update??\n\nOn Mon, 16 Nov 2026 at 10:12, Slotwise Support <support@slotwise.test> wrote:\n> Thanks Tom, we're looking into the sync issue and will get back to you.",
+    "headers": {
+      "In-Reply-To": "<support-8812@slotwise.test>",
+      "References": "<tom-4410@fischer-osteo.example> <support-8812@slotwise.test>"
+    },
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P2",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-google-calendar"
+      ],
+      "forbidden_in_reply": [
+        "has been fixed",
+        "is now fixed",
+        "by tomorrow"
+      ],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "other",
+          "how_to"
+        ],
+        "urgency": [
+          "P2",
+          "P3"
+        ]
+      }
+    },
+    "why": "Almost no content of its own; context lives in the quoted thread. A chaser deserves review (and a bump in urgency), not a generic auto-reply or a promise of a fix date."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 6307,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Tom,\n\nThanks for following up, and sorry for the wait. I don't have an update on your case yet, and I can't give a timeline, but a teammate will follow up with you directly.\n\nIn the meantime, here are some things you can try. Go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and allow both permissions (view and edit events). Also check that the time zone in Settings → Business details matches your Google Calendar.\n\nIf sync still fails, please reply with the staff member's name and an example appointment so our team can check the sync log. You can also check live status of calendar sync at status.slotwise.test.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-google-calendar",
+          "kb-status-outages"
+        ],
+        "pii_masked": 1,
+        "cost_usd": 0.011694,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P3",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "Customer follows up asking for an update on an unresolved Google Calendar sync issue.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "1 personal detail(s) masked before AI",
+          "The help center doesn’t answer this question. Answer it, then save the answer to the help center.",
+          "Model confidence is medium",
+          "Model suggests a human look: Follow-up on an existing open ticket; an agent must check investigation status and reply with an update."
+        ],
+        "draft": "Hi Tom,\n\nThanks for following up, and sorry for the wait. I don't have an update on your case yet, and I can't give a timeline, but a teammate will follow up with you directly.\n\nIn the meantime, here are some things you can try. Go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and allow both permissions (view and edit events). Also check that the time zone in Settings → Business details matches your Google Calendar.\n\nIf sync still fails, please reply with the staff member's name and an example appointment so our team can check the sync log. You can also check live status of calendar sync at status.slotwise.test.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-google-calendar",
+            "title": "Connect and troubleshoot Google Calendar sync"
+          },
+          {
+            "id": "kb-status-outages",
+            "title": "Service status, outages and incident updates"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "pii",
+            "text": "1 personal detail(s) masked before AI"
+          },
+          {
+            "kind": "no_source",
+            "text": "The help center doesn’t answer this question. Answer it, then save the answer to the help center."
+          }
+        ],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 1,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011694,
+        "ms": 6307
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "case": {
+    "id": "C01",
+    "title": "Polite email that hides an outage",
+    "kind": "failure",
+    "channel": "email",
+    "from_name": "Dr. Amina Siddiqui",
+    "from_address": "amina@brightsmile-dental.example",
+    "subject": "Quick question about our booking page",
+    "text": "Hi Slotwise team,\n\nHope you're having a good week. Sorry to bother you, I'm sure it's something on our end, but none of our patients have been able to book online since about 9am this morning. The booking page just shows a spinning circle and then \"Something went wrong\". Our receptionist has been taking calls all morning instead.\n\nNo rush at all, whenever someone has a moment.\n\nKind regards,\nAmina\nBright Smile Dental",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "outage",
+      "urgency": "P1",
+      "lane": "escalated",
+      "team": "engineering",
+      "must_escalate": true,
+      "injection": false,
+      "kb": [
+        "kb-status-outages"
+      ],
+      "forbidden_in_reply": [
+        "fixed now",
+        "has been resolved"
+      ],
+      "language": "en"
+    },
+    "why": "Tone is calm and says 'no rush', but the content (no patient can book since 9am) is a P1 outage. Tests that urgency comes from impact, not tone."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 4779,
+      "output": {
+        "qualifies": true,
+        "category": "outage",
+        "urgency": "P1",
+        "team": "engineering",
+        "escalated": true,
+        "lane": "escalated",
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-status-outages",
+          "kb-google-calendar",
+          "kb-booking-page"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.004884,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "outage",
+        "urgency": "P1",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer reports patients cannot book online since 9am; booking page shows a spinner then 'Something went wrong', forcing phone bookings.",
+        "team": "engineering",
+        "lane": "escalated",
+        "reasons": [
+          "P1 outage — engineering on-call"
+        ],
+        "draft": null,
+        "sources": [
+          {
+            "id": "kb-status-outages",
+            "title": "Service status, outages and incident updates"
+          },
+          {
+            "id": "kb-google-calendar",
+            "title": "Connect and troubleshoot Google Calendar sync"
+          },
+          {
+            "id": "kb-booking-page",
+            "title": "Set up and share your online booking page"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.004884,
+        "ms": 4779
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": true,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "case": {
+    "id": "C20",
+    "title": "Change reminder timing",
+    "kind": "representative",
+    "channel": "whatsapp",
+    "from_name": "Lucas Silva",
+    "from_address": "+55 11 90000 0000",
+    "subject": null,
+    "text": "Hey, reminders go out 24h before but my clients forget anyway. Can I send one 2 hours before too?",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "how_to",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-reminders"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en"
+    },
+    "why": "Reminder timing how-to (up to three reminders per appointment)."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 5175,
+      "output": {
+        "qualifies": true,
+        "category": "how_to",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "reply",
+        "reply": "Hi Lucas, yes, you can! Slotwise lets you add up to three reminders per appointment, so a 24-hour reminder plus a 2-hour reminder works well.\n\nHere's how:\n1. Go to Settings → Reminders.\n2. Choose your channel: SMS, WhatsApp, or SMS + WhatsApp.\n3. In the timing section, add a second reminder set to 2 hours before.\n4. Edit the message template if you like, then click Save.\n\nNew and existing future appointments will use the new settings. Keep in mind that SMS and WhatsApp reminders use message credits, and you can check your balance in Settings → Billing → Message credits. If credits run out, reminders pause until you top up.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-reminders"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.011774,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "how_to",
+        "urgency": "P3",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer asks if they can add a second appointment reminder 2 hours before the appointment in addition to the 24h one.",
+        "team": "support",
+        "lane": "reply",
+        "reasons": [
+          "Grounded draft, no flags, high confidence"
+        ],
+        "draft": "Hi Lucas, yes, you can! Slotwise lets you add up to three reminders per appointment, so a 24-hour reminder plus a 2-hour reminder works well.\n\nHere's how:\n1. Go to Settings → Reminders.\n2. Choose your channel: SMS, WhatsApp, or SMS + WhatsApp.\n3. In the timing section, add a second reminder set to 2 hours before.\n4. Edit the message template if you like, then click Save.\n\nNew and existing future appointments will use the new settings. Keep in mind that SMS and WhatsApp reminders use message credits, and you can check your balance in Settings → Billing → Message credits. If credits run out, reminders pause until you top up.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-reminders",
+            "title": "Set up SMS and WhatsApp appointment reminders"
+          }
+        ],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011774,
+        "ms": 5175
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "case": {
+    "id": "C11",
+    "title": "Vague 'it doesn't work' on WhatsApp",
+    "kind": "edge",
+    "channel": "whatsapp",
+    "from_name": "Bilal",
+    "from_address": "+92 300 0000001",
+    "subject": null,
+    "text": "it doesnt work",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P3",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "other"
+        ]
+      }
+    },
+    "why": "Too little information to answer. Should qualify but go to review; a good draft asks a clarifying question instead of guessing an answer."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 3192,
+      "output": {
+        "qualifies": true,
+        "category": "other",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": null,
+        "reply": "Hi Bilal, sorry you're having trouble. I'd like to help, but I need a few more details first. Could you tell me:\n1. What isn't working (the booking page, logging in, reminders, calendar sync, payments, or something else)?\n2. What you see when it fails, such as an error message (a screenshot helps)?\n3. When it started, and whether it affects everyone or only some staff or services?\n\nIf clients can't load your booking page or nobody can book, please send your booking page link and the time the problem started, and we'll pass it to our engineering team right away. You can also check live status at status.slotwise.test.",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.013974,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "other",
+          "urgency": "P3",
+          "team": "support",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hi Bilal, sorry you're having trouble. I'd like to help, but I need a few more details first. Could you tell me:\n1. What isn't working (the booking page, logging in, reminders, calendar sync, payments, or something else)?\n2. What you see when it fails, such as an error message (a screenshot helps)?\n3. When it started, and whether it affects everyone or only some staff or services?\n\nIf clients can't load your booking page or nobody can book, please send your booking page link and the time the problem started, and we'll pass it to our engineering team right away. You can also check live status at status.slotwise.test."
+        },
+        "usage": {
+          "input": 5757,
+          "output": 246,
+          "cost_usd": 0.013974
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 8342,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "engineering",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Bilal, sorry you're running into trouble! We need a few details to find out what's going wrong. Could you tell us what exactly isn't working (for example the booking page, the dashboard, reminders or Google Calendar sync), and what you see when it happens? A screenshot of any error would help too.\n\nIn the meantime, you can check live status at status.slotwise.test. If it shows everything is working, try a different browser or a private window and clear the cache. If clients can't book or your booking page shows errors, please send us your booking page link, the time the problem started, a screenshot, and whether it affects everyone or only some staff or services.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-status-outages"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.010868,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P3",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "Customer says 'it doesn't work' with no details about what is failing.",
+        "team": "engineering",
+        "lane": "review",
+        "reasons": [
+          "Model has low confidence in this draft",
+          "Model confidence is low",
+          "Model suggests a human look: Message is too vague to classify or answer; agent must ask for details (which feature, error message, screenshots)."
+        ],
+        "draft": "Hi Bilal, sorry you're running into trouble! We need a few details to find out what's going wrong. Could you tell us what exactly isn't working (for example the booking page, the dashboard, reminders or Google Calendar sync), and what you see when it happens? A screenshot of any error would help too.\n\nIn the meantime, you can check live status at status.slotwise.test. If it shows everything is working, try a different browser or a private window and clear the cache. If clients can't book or your booking page shows errors, please send us your booking page link, the time the problem started, a screenshot, and whether it affects everyone or only some staff or services.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-status-outages",
+            "title": "Service status, outages and incident updates"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "low_confidence",
+            "text": "Model has low confidence in this draft"
+          }
+        ],
+        "confidence": "low",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.010868,
+        "ms": 8342
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": false,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

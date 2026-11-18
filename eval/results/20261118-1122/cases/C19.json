@@ -1,0 +1,96 @@
+{
+  "case": {
+    "id": "C19",
+    "title": "Where is my booking page link",
+    "kind": "representative",
+    "channel": "whatsapp",
+    "from_name": "Ayesha Malik",
+    "from_address": "+92 321 0000000",
+    "subject": null,
+    "text": "Hi where can I find the link to my booking page? I want to put it on my Instagram",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "how_to",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-booking-page"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en"
+    },
+    "why": "Short, common how-to; ideal candidate for a ready-to-approve reply."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 4485,
+      "output": {
+        "qualifies": true,
+        "category": "how_to",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "reply",
+        "reply": "Hi Ayesha, happy to help! You can find your booking page link in Settings → Booking Page → Share. Just copy the link from there and add it to your Instagram bio.\n\nA couple of tips: make sure Publish booking page is turned on in Settings → Booking Page so clients can actually book. Also, if you ever change your page address under Page link, old links stop working, so you'd need to update your Instagram bio with the new one.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-booking-page"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.010226,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "how_to",
+        "urgency": "P3",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer asks where to find their online booking page link to share on Instagram.",
+        "team": "support",
+        "lane": "reply",
+        "reasons": [
+          "Grounded draft, no flags, high confidence"
+        ],
+        "draft": "Hi Ayesha, happy to help! You can find your booking page link in Settings → Booking Page → Share. Just copy the link from there and add it to your Instagram bio.\n\nA couple of tips: make sure Publish booking page is turned on in Settings → Booking Page so clients can actually book. Also, if you ever change your page address under Page link, old links stop working, so you'd need to update your Instagram bio with the new one.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-booking-page",
+            "title": "Set up and share your online booking page"
+          }
+        ],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.010226,
+        "ms": 4485
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

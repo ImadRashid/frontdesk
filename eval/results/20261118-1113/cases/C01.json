@@ -1,0 +1,144 @@
+{
+  "case": {
+    "id": "C01",
+    "title": "Polite email that hides an outage",
+    "kind": "failure",
+    "channel": "email",
+    "from_name": "Dr. Amina Siddiqui",
+    "from_address": "amina@brightsmile-dental.example",
+    "subject": "Quick question about our booking page",
+    "text": "Hi Slotwise team,\n\nHope you're having a good week. Sorry to bother you, I'm sure it's something on our end, but none of our patients have been able to book online since about 9am this morning. The booking page just shows a spinning circle and then \"Something went wrong\". Our receptionist has been taking calls all morning instead.\n\nNo rush at all, whenever someone has a moment.\n\nKind regards,\nAmina\nBright Smile Dental",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "outage",
+      "urgency": "P1",
+      "lane": "escalated",
+      "team": "engineering",
+      "must_escalate": true,
+      "injection": false,
+      "kb": [
+        "kb-status-outages"
+      ],
+      "forbidden_in_reply": [
+        "fixed now",
+        "has been resolved"
+      ],
+      "language": "en"
+    },
+    "why": "Tone is calm and says 'no rush', but the content (no patient can book since 9am) is a P1 outage. Tests that urgency comes from impact, not tone."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 5150,
+      "output": {
+        "qualifies": true,
+        "category": "outage",
+        "urgency": "P1",
+        "team": "engineering",
+        "escalated": true,
+        "lane": null,
+        "reply": "Hi Dr. Siddiqui,\n\nThank you for letting us know, and please don't apologise. A booking page that shows an error to every patient is something we treat as urgent, so I have passed this to our engineering team right away.\n\nWhile they investigate, you can check live status at status.slotwise.test (click Subscribe for email updates). During an incident, engineering posts an update there every 30 minutes. Bookings already made are not lost.\n\nTo help engineering find the cause quickly, please reply with:\n- your booking page link,\n- a screenshot of the \"Something went wrong\" error,\n- confirmation that the problem started at about 9am and affects all patients and all staff/services, or only some.\n\nWe are sorry for the disruption to your reception team this morning. We will follow up as soon as we have more information.\n\nKind regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.015214,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "outage",
+          "urgency": "P1",
+          "team": "engineering",
+          "escalate": true,
+          "language": "en",
+          "reply": "Hi Dr. Siddiqui,\n\nThank you for letting us know, and please don't apologise. A booking page that shows an error to every patient is something we treat as urgent, so I have passed this to our engineering team right away.\n\nWhile they investigate, you can check live status at status.slotwise.test (click Subscribe for email updates). During an incident, engineering posts an update there every 30 minutes. Bookings already made are not lost.\n\nTo help engineering find the cause quickly, please reply with:\n- your booking page link,\n- a screenshot of the \"Something went wrong\" error,\n- confirmation that the problem started at about 9am and affects all patients and all staff/services, or only some.\n\nWe are sorry for the disruption to your reception team this morning. We will follow up as soon as we have more information.\n\nKind regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5917,
+          "output": 338,
+          "cost_usd": 0.015214
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": true,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 3217,
+      "output": {
+        "qualifies": true,
+        "category": "outage",
+        "urgency": "P1",
+        "team": "engineering",
+        "escalated": true,
+        "lane": "escalated",
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [],
+        "pii_masked": 0,
+        "cost_usd": 0.005084,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "outage",
+        "urgency": "P1",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Clinic's online booking page has shown a spinner and 'Something went wrong' since 9am, so no patients can book online.",
+        "team": "engineering",
+        "lane": "escalated",
+        "reasons": [
+          "P1 outage — engineering on-call"
+        ],
+        "draft": null,
+        "sources": [],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.005084,
+        "ms": 3216
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": true,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": false,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "case": {
+    "id": "C24",
+    "title": "Happy thank-you note",
+    "kind": "representative",
+    "channel": "email",
+    "from_name": "Grace Adeyemi",
+    "from_address": "grace@curlsandco.example",
+    "subject": "Thank you!",
+    "text": "Just wanted to say thank you to Sam from your support team for helping me set up deposits last week. No-shows are down a lot already. You've made my life so much easier!\n\nGrace",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "other",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [
+        "free month",
+        "discount"
+      ],
+      "language": "en",
+      "accept": {
+        "team": [
+          "support",
+          "success"
+        ],
+        "lane": [
+          "reply",
+          "review"
+        ]
+      }
+    },
+    "why": "Labelled as qualifying: a real customer wrote to us and deserves a short human thank-you. Lowest urgency, no KB needed."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 2399,
+      "output": {
+        "qualifies": false,
+        "category": null,
+        "urgency": null,
+        "team": null,
+        "escalated": false,
+        "lane": null,
+        "reply": "Hi Grace,\n\nThank you so much for the kind words! We're delighted to hear that deposits are already cutting down your no-shows, and I'll make sure Sam hears your feedback. If you need anything else, just reply to this email.\n\nBest wishes,\nThe Slotwise Support Team",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.013108,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": false,
+          "category": "none",
+          "urgency": "none",
+          "team": "none",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hi Grace,\n\nThank you so much for the kind words! We're delighted to hear that deposits are already cutting down your no-shows, and I'll make sure Sam hears your feedback. If you need anything else, just reply to this email.\n\nBest wishes,\nThe Slotwise Support Team"
+        },
+        "usage": {
+          "input": 5819,
+          "output": 147,
+          "cost_usd": 0.013108
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": false,
+        "category_ok": false,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": false,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 6580,
+      "output": {
+        "qualifies": true,
+        "category": "other",
+        "urgency": "P4",
+        "team": "support",
+        "escalated": false,
+        "lane": "reply",
+        "reply": "Hi Grace,\n\nThank you so much for your kind words! We're delighted to hear that deposits are already cutting down your no-shows and making things easier for you. I'll make sure your feedback gets passed on to Sam.\n\nIf you ever want to cut no-shows further, automatic SMS or WhatsApp reminders can help too, and you can find them under Settings → Reminders.\n\nWishing you a very busy and smooth-running schedule!\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-reminders"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.010814,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "other",
+        "urgency": "P4",
+        "sentiment": "positive",
+        "language": "en",
+        "summary": "Customer thanks support agent Sam for help setting up deposits and reports fewer no-shows; no action requested.",
+        "team": "support",
+        "lane": "reply",
+        "reasons": [
+          "Grounded draft, no flags, high confidence"
+        ],
+        "draft": "Hi Grace,\n\nThank you so much for your kind words! We're delighted to hear that deposits are already cutting down your no-shows and making things easier for you. I'll make sure your feedback gets passed on to Sam.\n\nIf you ever want to cut no-shows further, automatic SMS or WhatsApp reminders can help too, and you can find them under Settings → Reminders.\n\nWishing you a very busy and smooth-running schedule!\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-reminders",
+            "title": "Set up SMS and WhatsApp appointment reminders"
+          }
+        ],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.010814,
+        "ms": 6580
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

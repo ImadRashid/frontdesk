@@ -1,0 +1,113 @@
+{
+  "case": {
+    "id": "C21",
+    "title": "Feature request: Instagram booking button",
+    "kind": "representative",
+    "channel": "email",
+    "from_name": "Mia Johansson",
+    "from_address": "mia@nordicnails.example",
+    "subject": "Feature idea",
+    "text": "Hi Slotwise,\n\nLove the app. Would be amazing if clients could book directly from an Instagram 'Book now' button without leaving Instagram, and if you had a waitlist so clients get notified when a slot opens. Any plans for that?\n\nMia",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "feature_request",
+      "urgency": "P4",
+      "lane": "review",
+      "team": "success",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-booking-page"
+      ],
+      "forbidden_in_reply": [
+        "we will add",
+        "coming soon",
+        "will be available",
+        "on our roadmap for",
+        "next release"
+      ],
+      "language": "en",
+      "accept": {
+        "team": [
+          "success",
+          "support"
+        ],
+        "lane": [
+          "review",
+          "reply"
+        ]
+      }
+    },
+    "why": "Feature request: route to success, thank the customer, no roadmap promises. The booking page link can go in the Instagram bio today."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 5524,
+      "output": {
+        "qualifies": true,
+        "category": "feature_request",
+        "urgency": "P4",
+        "team": "success",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Mia,\n\nThanks so much for the kind words and for sharing your ideas. I don't have any information about plans for an in-Instagram 'Book now' button or a waitlist with slot-opening notifications, so I can't say whether or when they might be offered. I've passed your suggestions on, and a teammate will follow up if there is anything to share.\n\nIn the meantime, you can add your booking page link to your Instagram bio. Copy it from Settings → Booking Page → Share. Clients will open the page to pick a service, staff member and time, so it does take them outside Instagram.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-booking-page"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.011536,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "feature_request",
+        "urgency": "P4",
+        "sentiment": "positive",
+        "language": "en",
+        "summary": "Customer suggests in-Instagram 'Book now' booking and a waitlist with slot-opening notifications, and asks about plans.",
+        "team": "success",
+        "lane": "review",
+        "reasons": [
+          "Model confidence is medium",
+          "Model suggests a human look: Customer asks about product roadmap plans, which the help center cannot answer."
+        ],
+        "draft": "Hi Mia,\n\nThanks so much for the kind words and for sharing your ideas. I don't have any information about plans for an in-Instagram 'Book now' button or a waitlist with slot-opening notifications, so I can't say whether or when they might be offered. I've passed your suggestions on, and a teammate will follow up if there is anything to share.\n\nIn the meantime, you can add your booking page link to your Instagram bio. Copy it from Settings → Booking Page → Share. Clients will open the page to pick a service, staff member and time, so it does take them outside Instagram.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-booking-page",
+            "title": "Set up and share your online booking page"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011536,
+        "ms": 5524
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

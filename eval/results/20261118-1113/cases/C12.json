@@ -1,0 +1,142 @@
+{
+  "case": {
+    "id": "C12",
+    "title": "Automated newsletter (noreply + List-Unsubscribe)",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Stripe",
+    "from_address": "noreply@stripe-updates.example",
+    "subject": "Your November product update from Stripe",
+    "text": "What's new this month: faster payouts in 12 new countries, updated dashboard reports, and a new API version. Read the full changelog on our blog.\n\nYou are receiving this email because you have a Stripe account. Unsubscribe | Manage preferences",
+    "headers": {
+      "List-Unsubscribe": "<mailto:unsubscribe@stripe-updates.example>, <https://stripe-updates.example/unsub>",
+      "Precedence": "bulk"
+    },
+    "expected": {
+      "qualifies": false,
+      "category": null,
+      "urgency": null,
+      "lane": null,
+      "team": null,
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [],
+      "language": "en"
+    },
+    "why": "Bulk/automated email. The prefilter should drop it from headers alone without spending a model call."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 1147,
+      "output": {
+        "qualifies": false,
+        "category": null,
+        "urgency": null,
+        "team": null,
+        "escalated": false,
+        "lane": null,
+        "reply": null,
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.012264,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": false,
+          "category": "none",
+          "urgency": "none",
+          "team": "none",
+          "escalate": false,
+          "language": "en",
+          "reply": ""
+        },
+        "usage": {
+          "input": 5902,
+          "output": 46,
+          "cost_usd": 0.012264
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": null,
+        "urgency_ok": null,
+        "p1_caught": null,
+        "team_ok": null,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": null,
+        "language_ok": null,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 0,
+      "output": {
+        "qualifies": false,
+        "category": null,
+        "urgency": null,
+        "team": null,
+        "escalated": false,
+        "lane": null,
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [],
+        "pii_masked": 0,
+        "cost_usd": 0,
+        "model": "rules",
+        "mode": "rules"
+      },
+      "raw": {
+        "qualifies": false,
+        "not_qualifying_reason": "automated",
+        "category": null,
+        "urgency": null,
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Your November product update from Stripe",
+        "team": null,
+        "lane": null,
+        "reasons": [
+          "Sent from a no-reply / system address"
+        ],
+        "draft": null,
+        "sources": [],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "rules",
+        "model": "rules",
+        "cost_usd": 0,
+        "ms": 0
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": null,
+        "urgency_ok": null,
+        "p1_caught": null,
+        "team_ok": null,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": null,
+        "language_ok": null,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    }
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "case": {
+    "id": "C22",
+    "title": "Need an invoice copy with VAT number",
+    "kind": "representative",
+    "channel": "email",
+    "from_name": "Thomas Müller",
+    "from_address": "buchhaltung@praxis-mueller.example",
+    "subject": "Invoice October with VAT ID",
+    "text": "Hello,\n\nPlease can you send me the October invoice with our VAT ID DE000000000 on it? Our tax advisor needs it.\n\nRegards,\nThomas Müller\nPraxis Müller",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "billing",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "billing",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-plans-billing"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "urgency": [
+          "P3",
+          "P4"
+        ],
+        "lane": [
+          "reply",
+          "review"
+        ]
+      }
+    },
+    "why": "Invoices are self-serve in Settings → Billing → Invoices; VAT number in Billing details (applies to future invoices; past corrected copy via billing)."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 2654,
+      "output": {
+        "qualifies": true,
+        "category": "billing",
+        "urgency": "P3",
+        "team": "billing",
+        "escalated": true,
+        "lane": null,
+        "reply": "Hello Thomas,\n\nThank you for your message. Because the October invoice has already been issued, we cannot add the VAT ID to it ourselves. Changes to Billing details only apply to future invoices. A corrected copy of a past invoice has to be prepared by our billing team, so I have passed your request to them. They will follow up with you directly.\n\nTo help them, please reply with the invoice number if you have it, and confirm the company name and address that should appear on the invoice together with VAT ID DE000000000.\n\nIn the meantime, the owner of the account can add the VAT ID under Settings → Billing → Billing details so that all future invoices include it. You can find your existing invoices under Settings → Billing → Invoices.\n\nKind regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.014716,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "billing",
+          "urgency": "P3",
+          "team": "billing",
+          "escalate": true,
+          "language": "en",
+          "reply": "Hello Thomas,\n\nThank you for your message. Because the October invoice has already been issued, we cannot add the VAT ID to it ourselves. Changes to Billing details only apply to future invoices. A corrected copy of a past invoice has to be prepared by our billing team, so I have passed your request to them. They will follow up with you directly.\n\nTo help them, please reply with the invoice number if you have it, and confirm the company name and address that should appear on the invoice together with VAT ID DE000000000.\n\nIn the meantime, the owner of the account can add the VAT ID under Settings → Billing → Billing details so that all future invoices include it. You can find your existing invoices under Settings → Billing → Invoices.\n\nKind regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5838,
+          "output": 304,
+          "cost_usd": 0.014716
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": false,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 7581,
+      "output": {
+        "qualifies": true,
+        "category": "billing",
+        "urgency": "P3",
+        "team": "billing",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hello Thomas,\n\nThanks for your message. You can add your VAT number in Settings → Billing → Billing details, but that only applies to future invoices, so it won't change the October invoice automatically. A corrected copy of a past invoice has to come from our billing team. I've passed your request to them, and a teammate will follow up with you about the October invoice. You can also download the original PDF anytime in Settings → Billing → Invoices.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-plans-billing"
+        ],
+        "pii_masked": 1,
+        "cost_usd": 0.011236,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "billing",
+        "urgency": "P3",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Customer requests the October invoice reissued with their VAT ID added for their tax advisor.",
+        "team": "billing",
+        "lane": "review",
+        "reasons": [
+          "1 personal detail(s) masked before AI",
+          "Model confidence is medium",
+          "Model suggests a human look: Reissuing an invoice with a VAT ID requires a person to update billing details and generate a corrected invoice; the VAT ID in the message also appears redacted/incomplete and needs confirmation."
+        ],
+        "draft": "Hello Thomas,\n\nThanks for your message. You can add your VAT number in Settings → Billing → Billing details, but that only applies to future invoices, so it won't change the October invoice automatically. A corrected copy of a past invoice has to come from our billing team. I've passed your request to them, and a teammate will follow up with you about the October invoice. You can also download the original PDF anytime in Settings → Billing → Invoices.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-plans-billing",
+            "title": "Plans, billing, invoices and refund requests"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "pii",
+            "text": "1 personal detail(s) masked before AI"
+          }
+        ],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 1,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011236,
+        "ms": 7581
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

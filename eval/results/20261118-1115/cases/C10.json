@@ -1,0 +1,87 @@
+{
+  "case": {
+    "id": "C10",
+    "title": "SEO / spam offer",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Kevin | RankBoost Digital",
+    "from_address": "kevin@rankboost-seo.example",
+    "subject": "Get Slotwise to #1 on Google in 30 days (guaranteed)",
+    "text": "Hi there,\n\nI was checking slotwise.test and noticed you're missing out on 1000s of visitors per month. Our white-hat SEO package gets you to page 1 on Google in 30 days, GUARANTEED, or your money back. Packages from just $299/mo.\n\nCan I send you a free audit? Just reply YES.\n\nBest,\nKevin\nRankBoost Digital",
+    "headers": {},
+    "expected": {
+      "qualifies": false,
+      "category": null,
+      "urgency": null,
+      "lane": null,
+      "team": null,
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [],
+      "language": "en"
+    },
+    "why": "Unsolicited sales pitch, not a customer request. Should be filtered (spam) and never reach a queue."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 1,
+      "output": {
+        "qualifies": false,
+        "category": null,
+        "urgency": null,
+        "team": null,
+        "escalated": false,
+        "lane": null,
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [],
+        "pii_masked": 0,
+        "cost_usd": 0,
+        "model": "rules",
+        "mode": "rules"
+      },
+      "raw": {
+        "qualifies": false,
+        "not_qualifying_reason": "spam",
+        "category": null,
+        "urgency": null,
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Get Slotwise to #1 on Google in 30 days (guaranteed)",
+        "team": null,
+        "lane": null,
+        "reasons": [
+          "Looks like SEO / marketing spam"
+        ],
+        "draft": null,
+        "sources": [],
+        "flags": [],
+        "confidence": "high",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "rules",
+        "model": "rules",
+        "cost_usd": 0,
+        "ms": 0
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": null,
+        "urgency_ok": null,
+        "p1_caught": null,
+        "team_ok": null,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": null,
+        "language_ok": null,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    }
+  }
+}

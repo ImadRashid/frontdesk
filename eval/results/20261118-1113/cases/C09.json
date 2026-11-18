@@ -1,0 +1,178 @@
+{
+  "case": {
+    "id": "C09",
+    "title": "Follow-up 'any update??' on an existing thread",
+    "kind": "edge",
+    "channel": "email",
+    "from_name": "Tom Fischer",
+    "from_address": "tom@fischer-osteo.example",
+    "subject": "Re: Google Calendar not syncing",
+    "text": "any update??\n\nOn Mon, 16 Nov 2026 at 10:12, Slotwise Support <support@slotwise.test> wrote:\n> Thanks Tom, we're looking into the sync issue and will get back to you.",
+    "headers": {
+      "In-Reply-To": "<support-8812@slotwise.test>",
+      "References": "<tom-4410@fischer-osteo.example> <support-8812@slotwise.test>"
+    },
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P2",
+      "lane": "review",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-google-calendar"
+      ],
+      "forbidden_in_reply": [
+        "has been fixed",
+        "is now fixed",
+        "by tomorrow"
+      ],
+      "language": "en",
+      "accept": {
+        "category": [
+          "bug",
+          "other",
+          "how_to"
+        ],
+        "urgency": [
+          "P2",
+          "P3"
+        ]
+      }
+    },
+    "why": "Almost no content of its own; context lives in the quoted thread. A chaser deserves review (and a bump in urgency), not a generic auto-reply or a promise of a fix date."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 2782,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": true,
+        "lane": null,
+        "reply": "Hi Tom, sorry for the wait, and thanks for following up. I can't see the investigation results from here, so I've passed your message to our team to check the sync log and reply to you directly. To help them move faster, please reply with the name of the affected staff member and an example appointment that didn't sync. In the meantime, you can try reconnecting: go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and allow both permissions (view and edit events). Also check that the right calendar is ticked under \"Calendars that block availability\". Thanks for your patience.",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.01416,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "bug",
+          "urgency": "P3",
+          "team": "support",
+          "escalate": true,
+          "language": "en",
+          "reply": "Hi Tom, sorry for the wait, and thanks for following up. I can't see the investigation results from here, so I've passed your message to our team to check the sync log and reply to you directly. To help them move faster, please reply with the name of the affected staff member and an example appointment that didn't sync. In the meantime, you can try reconnecting: go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and allow both permissions (view and edit events). Also check that the right calendar is ticked under \"Calendars that block availability\". Thanks for your patience."
+        },
+        "usage": {
+          "input": 5900,
+          "output": 236,
+          "cost_usd": 0.01416
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": false,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 5704,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P3",
+        "team": "engineering",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Tom, thanks for following up, and sorry for the wait. I don't have a status update on your case to share yet, but a teammate will follow up with you directly. In the meantime, here are a few things you can try. Go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and make sure you allow both permissions (view and edit events). Also check that your busy calendar is ticked under \"Calendars that block availability\", and that the time zone in Settings → Business details matches Google Calendar. If sync still fails, please reply with the staff member's name and an example appointment so our team can check the sync log. You can also see live calendar sync status at status.slotwise.test. Slotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-google-calendar",
+          "kb-status-outages"
+        ],
+        "pii_masked": 1,
+        "cost_usd": 0.011454,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P3",
+        "sentiment": "negative",
+        "language": "en",
+        "summary": "Customer follows up asking for an update on a previously reported Google Calendar sync issue.",
+        "team": "engineering",
+        "lane": "review",
+        "reasons": [
+          "1 personal detail(s) masked before AI",
+          "Model confidence is medium",
+          "Model suggests a human look: Follow-up on an existing open ticket; requires an agent to check investigation status and give an update."
+        ],
+        "draft": "Hi Tom, thanks for following up, and sorry for the wait. I don't have a status update on your case to share yet, but a teammate will follow up with you directly. In the meantime, here are a few things you can try. Go to Profile → Calendar sync, click Disconnect, then Connect Google Calendar again, and make sure you allow both permissions (view and edit events). Also check that your busy calendar is ticked under \"Calendars that block availability\", and that the time zone in Settings → Business details matches Google Calendar. If sync still fails, please reply with the staff member's name and an example appointment so our team can check the sync log. You can also see live calendar sync status at status.slotwise.test. Slotwise Support",
+        "sources": [
+          {
+            "id": "kb-google-calendar",
+            "title": "Connect and troubleshoot Google Calendar sync"
+          },
+          {
+            "id": "kb-status-outages",
+            "title": "Service status, outages and incident updates"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "pii",
+            "text": "1 personal detail(s) masked before AI"
+          }
+        ],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 1,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011454,
+        "ms": 5704
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": false,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": true
+      },
+      "unsafe_hits": []
+    }
+  }
+}

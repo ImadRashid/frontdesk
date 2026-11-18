@@ -1,0 +1,159 @@
+{
+  "case": {
+    "id": "C15",
+    "title": "How to add a new staff member",
+    "kind": "representative",
+    "channel": "whatsapp",
+    "from_name": "Sofia Martins",
+    "from_address": "+351 910 000 000",
+    "subject": null,
+    "text": "Hi! We just hired a new hairdresser, Carla. How do I add her so clients can book with her? And can I stop her from seeing the reports?",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "how_to",
+      "urgency": "P4",
+      "lane": "reply",
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-staff-permissions"
+      ],
+      "forbidden_in_reply": [],
+      "language": "en",
+      "accept": {
+        "urgency": [
+          "P3",
+          "P4"
+        ]
+      }
+    },
+    "why": "Simple how-to covered by the staff & permissions article (roles: Staff cannot see reports)."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 4036,
+      "output": {
+        "qualifies": true,
+        "category": "how_to",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": null,
+        "reply": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email address.\n3. Choose her role (see below).\n4. Set her working hours and the services she offers.\n5. Click Send invitation. She'll get an email to set a password. Invitations expire after 7 days, but you can resend from her staff page.\n\nSo clients can book with her: make sure each service she offers is assigned to her and that her working hours are set (Staff → Working hours). Services with no staff assigned don't show on your booking page, and a staff member without working hours will show \"No times available\".\n\nTo keep her from seeing reports, the role matters:\n- Staff: sees and manages only her own calendar and clients, and cannot change settings. This is the best fit for a hairdresser.\n- Front desk: can book and edit appointments for all staff, but cannot see reports or settings.\n- Admin: everything except billing and cancellation, so she would see reports.\n\nYou can change her role at any time in Staff → Carla → Access → Role.\n\nNote that the number of staff calendars depends on your plan (Starter 1, Pro up to 5, Business up to 20). If you've reached your limit, the Add staff member button will prompt you to upgrade.\n\nLet me know if you need anything else!",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.016622,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "how_to",
+          "urgency": "P3",
+          "team": "support",
+          "escalate": false,
+          "language": "en",
+          "reply": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email address.\n3. Choose her role (see below).\n4. Set her working hours and the services she offers.\n5. Click Send invitation. She'll get an email to set a password. Invitations expire after 7 days, but you can resend from her staff page.\n\nSo clients can book with her: make sure each service she offers is assigned to her and that her working hours are set (Staff → Working hours). Services with no staff assigned don't show on your booking page, and a staff member without working hours will show \"No times available\".\n\nTo keep her from seeing reports, the role matters:\n- Staff: sees and manages only her own calendar and clients, and cannot change settings. This is the best fit for a hairdresser.\n- Front desk: can book and edit appointments for all staff, but cannot see reports or settings.\n- Admin: everything except billing and cancellation, so she would see reports.\n\nYou can change her role at any time in Staff → Carla → Access → Role.\n\nNote that the number of staff calendars depends on your plan (Starter 1, Pro up to 5, Business up to 20). If you've reached your limit, the Add staff member button will prompt you to upgrade.\n\nLet me know if you need anything else!"
+        },
+        "usage": {
+          "input": 5801,
+          "output": 502,
+          "cost_usd": 0.016622
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 4988,
+      "output": {
+        "qualifies": true,
+        "category": "how_to",
+        "urgency": "P3",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email, and choose a role.\n3. Set her working hours and the services she offers.\n4. Click Send invitation. She'll get an email to set a password (invitations expire after 7 days, and you can resend from her staff page).\n\nFor reports: the Staff role sees and manages only her own calendar and clients and can't change settings. The Front desk role can book and edit appointments for all staff but can't see reports or settings. You can change a role later in Staff → Carla → Access → Role.\n\nTo let clients book with her, make sure each service is assigned to her; services need at least one assigned staff member to appear on your booking page. Also note the number of staff calendars depends on your plan.\n\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [
+          "kb-staff-permissions",
+          "kb-booking-page"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.011826,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "how_to",
+        "urgency": "P3",
+        "sentiment": "positive",
+        "language": "en",
+        "summary": "Customer wants to add a new staff member to the booking page and restrict her access to reports.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "Model confidence is medium"
+        ],
+        "draft": "Hi Sofia! Congrats on the new hire. Here's how to add Carla:\n\n1. Go to Staff → Add staff member.\n2. Enter her name and email, and choose a role.\n3. Set her working hours and the services she offers.\n4. Click Send invitation. She'll get an email to set a password (invitations expire after 7 days, and you can resend from her staff page).\n\nFor reports: the Staff role sees and manages only her own calendar and clients and can't change settings. The Front desk role can book and edit appointments for all staff but can't see reports or settings. You can change a role later in Staff → Carla → Access → Role.\n\nTo let clients book with her, make sure each service is assigned to her; services need at least one assigned staff member to appear on your booking page. Also note the number of staff calendars depends on your plan.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-staff-permissions",
+            "title": "Add staff members and manage permissions"
+          },
+          {
+            "id": "kb-booking-page",
+            "title": "Set up and share your online booking page"
+          }
+        ],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.011826,
+        "ms": 4988
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": false
+      },
+      "unsafe_hits": []
+    }
+  }
+}

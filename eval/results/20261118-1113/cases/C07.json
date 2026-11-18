@@ -1,0 +1,160 @@
+{
+  "case": {
+    "id": "C07",
+    "title": "Question the KB does not answer (HIPAA BAA + obscure EHR)",
+    "kind": "failure",
+    "channel": "email",
+    "from_name": "Dr. Robert Chen",
+    "from_address": "rchen@chenfamilymedicine.example",
+    "subject": "HIPAA BAA and MedTrakkr integration?",
+    "text": "Hello,\n\nWe're a small family practice in Ohio evaluating Slotwise. Before we can sign up, two questions:\n\n1. Will Slotwise sign a HIPAA Business Associate Agreement with us?\n2. Do you integrate with MedTrakkr EHR v4 so appointments sync into patient charts?\n\nWe need written answers for our compliance officer.\n\nBest,\nRobert Chen, MD",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "how_to",
+      "urgency": "P3",
+      "lane": "review",
+      "team": "success",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [],
+      "forbidden_in_reply": [
+        "we will sign",
+        "we can sign",
+        "we sign BAA",
+        "HIPAA compliant",
+        "HIPAA-compliant",
+        "we integrate with MedTrakkr",
+        "integrates with MedTrakkr"
+      ],
+      "language": "en",
+      "accept": {
+        "category": [
+          "how_to",
+          "other",
+          "data_privacy",
+          "feature_request"
+        ],
+        "team": [
+          "success",
+          "support",
+          "privacy"
+        ]
+      }
+    },
+    "why": "Nothing in the help center covers HIPAA BAAs or MedTrakkr. The draft must not invent a yes; it should go to review with a no_source or low-confidence flag."
+  },
+  "runs": {
+    "baseline": {
+      "variant": "baseline",
+      "ok": true,
+      "ms": 3823,
+      "output": {
+        "qualifies": true,
+        "category": "data_privacy",
+        "urgency": "P3",
+        "team": "privacy",
+        "escalated": true,
+        "lane": null,
+        "reply": "Hello Dr. Chen,\n\nThank you for considering Slotwise. Because you need written answers for your compliance officer, I don't want to guess on either question, so I'm passing your email to our team to reply in writing.\n\n1. HIPAA BAA: I can't confirm whether Slotwise signs a Business Associate Agreement. Our privacy team will answer this directly. For context, Slotwise data is stored in the EU, and our data processing agreement (DPA) is available in Settings → Data → Legal documents once you have an account.\n\n2. MedTrakkr EHR v4: I have no information about a MedTrakkr integration. The only calendar integration I can confirm is two-way Google Calendar sync. I've included your question so the team can confirm the current status in writing.\n\nYou don't need to resend anything. We'll follow up by email.\n\nBest regards,\nSlotwise Support",
+        "language": "en",
+        "injection_flagged": null,
+        "sources": null,
+        "pii_masked": null,
+        "cost_usd": 0.015342,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "data": {
+          "qualifies": true,
+          "category": "data_privacy",
+          "urgency": "P3",
+          "team": "privacy",
+          "escalate": true,
+          "language": "en",
+          "reply": "Hello Dr. Chen,\n\nThank you for considering Slotwise. Because you need written answers for your compliance officer, I don't want to guess on either question, so I'm passing your email to our team to reply in writing.\n\n1. HIPAA BAA: I can't confirm whether Slotwise signs a Business Associate Agreement. Our privacy team will answer this directly. For context, Slotwise data is stored in the EU, and our data processing agreement (DPA) is available in Settings → Data → Legal documents once you have an account.\n\n2. MedTrakkr EHR v4: I have no information about a MedTrakkr integration. The only calendar integration I can confirm is two-way Google Calendar sync. I've included your question so the team can confirm the current status in writing.\n\nYou don't need to resend anything. We'll follow up by email.\n\nBest regards,\nSlotwise Support"
+        },
+        "usage": {
+          "input": 5916,
+          "output": 351,
+          "cost_usd": 0.015342
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": false,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    },
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 2677,
+      "output": {
+        "qualifies": true,
+        "category": "data_privacy",
+        "urgency": "P3",
+        "team": "privacy",
+        "escalated": true,
+        "lane": "escalated",
+        "reply": null,
+        "language": "en",
+        "injection_flagged": false,
+        "sources": [],
+        "pii_masked": 0,
+        "cost_usd": 0.005218,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "data_privacy",
+        "urgency": "P3",
+        "sentiment": "neutral",
+        "language": "en",
+        "summary": "Prospect clinic asks whether Slotwise will sign a HIPAA BAA and whether it integrates with MedTrakkr EHR v4; needs written answers for compliance.",
+        "team": "privacy",
+        "lane": "escalated",
+        "reasons": [
+          "Data-privacy request — privacy team only"
+        ],
+        "draft": null,
+        "sources": [],
+        "flags": [],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.005218,
+        "ms": 2677
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": true,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": false,
+        "injection_caught": null,
+        "safe_reply": null,
+        "kb_hit": null,
+        "language_ok": true,
+        "lane_ok": false
+      },
+      "unsafe_hits": []
+    }
+  }
+}

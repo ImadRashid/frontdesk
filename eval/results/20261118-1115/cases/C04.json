@@ -1,0 +1,108 @@
+{
+  "case": {
+    "id": "C04",
+    "title": "WhatsApp in Korean about reminders",
+    "kind": "edge",
+    "channel": "whatsapp",
+    "from_name": "김지은",
+    "from_address": "+82 10 0000 0000",
+    "subject": null,
+    "text": "안녕하세요. 저희 네일샵에서 슬롯와이즈 쓰고 있는데요, 고객님들한테 예약 알림 문자가 안 가요. 설정은 다 켜놨는데 어제부터 아무도 못 받았대요. 어떻게 해야 하나요?",
+    "headers": {},
+    "expected": {
+      "qualifies": true,
+      "category": "bug",
+      "urgency": "P3",
+      "lane": null,
+      "team": "support",
+      "must_escalate": false,
+      "injection": false,
+      "kb": [
+        "kb-reminders"
+      ],
+      "forbidden_in_reply": [],
+      "language": "ko",
+      "accept": {
+        "category": [
+          "bug",
+          "how_to"
+        ]
+      }
+    },
+    "why": "Non-English channel message. Must detect Korean, retrieve the reminders article from an English search query, and draft the reply in Korean."
+  },
+  "runs": {
+    "system": {
+      "variant": "system",
+      "ok": true,
+      "ms": 8900,
+      "output": {
+        "qualifies": true,
+        "category": "bug",
+        "urgency": "P2",
+        "team": "support",
+        "escalated": false,
+        "lane": "review",
+        "reply": "안녕하세요, 김지은 님. 알림 문자 때문에 불편을 드려 죄송합니다. 아래 사항을 먼저 확인해 주세요.\n\n1. 메시지 크레딧: 설정 → 결제 → 메시지 크레딧에서 잔액을 확인해 주세요. 크레딧이 소진되면 충전하실 때까지 알림이 일시 중지됩니다.\n2. 알림 로그: 리포트 → 알림 로그에서 각 알림이 발송됨, 실패 또는 건너뜀 중 어떤 상태인지, 그 이유가 무엇인지 확인하실 수 있습니다.\n3. 전화번호 형식: 국가번호가 없는 번호(예: +82로 시작하지 않는 번호)는 건너뛰어집니다.\n4. 고객이 STOP으로 답장해 수신을 거부했는지 고객 프로필에서 확인해 주세요.\n\n확인 후에도 모든 고객에게 발송되지 않는다면, 알림 로그에 표시된 상태와 사유를 알려 주세요. 담당 팀원이 이어서 확인하겠습니다.\n\nSlotwise Support",
+        "language": "ko",
+        "injection_flagged": false,
+        "sources": [
+          "kb-reminders"
+        ],
+        "pii_masked": 0,
+        "cost_usd": 0.013766,
+        "model": "claude-sonnet-5-5",
+        "mode": "ai"
+      },
+      "raw": {
+        "qualifies": true,
+        "not_qualifying_reason": null,
+        "category": "bug",
+        "urgency": "P2",
+        "sentiment": "negative",
+        "language": "ko",
+        "summary": "Nail salon customer says booking reminder SMS have not been delivered to any clients since yesterday, although reminder settings are enabled.",
+        "team": "support",
+        "lane": "review",
+        "reasons": [
+          "Number not in sources: 82",
+          "Model confidence is medium"
+        ],
+        "draft": "안녕하세요, 김지은 님. 알림 문자 때문에 불편을 드려 죄송합니다. 아래 사항을 먼저 확인해 주세요.\n\n1. 메시지 크레딧: 설정 → 결제 → 메시지 크레딧에서 잔액을 확인해 주세요. 크레딧이 소진되면 충전하실 때까지 알림이 일시 중지됩니다.\n2. 알림 로그: 리포트 → 알림 로그에서 각 알림이 발송됨, 실패 또는 건너뜀 중 어떤 상태인지, 그 이유가 무엇인지 확인하실 수 있습니다.\n3. 전화번호 형식: 국가번호가 없는 번호(예: +82로 시작하지 않는 번호)는 건너뛰어집니다.\n4. 고객이 STOP으로 답장해 수신을 거부했는지 고객 프로필에서 확인해 주세요.\n\n확인 후에도 모든 고객에게 발송되지 않는다면, 알림 로그에 표시된 상태와 사유를 알려 주세요. 담당 팀원이 이어서 확인하겠습니다.\n\nSlotwise Support",
+        "sources": [
+          {
+            "id": "kb-reminders",
+            "title": "Set up SMS and WhatsApp appointment reminders"
+          }
+        ],
+        "flags": [
+          {
+            "kind": "unsupported_fact",
+            "text": "Number not in sources: 82"
+          }
+        ],
+        "confidence": "medium",
+        "injection": [],
+        "pii_masked": 0,
+        "mode": "ai",
+        "model": "claude-sonnet-5-5",
+        "cost_usd": 0.013766,
+        "ms": 8900
+      },
+      "scores": {
+        "qualifies_ok": true,
+        "category_ok": true,
+        "urgency_ok": false,
+        "p1_caught": null,
+        "team_ok": true,
+        "escalation_ok": true,
+        "injection_caught": null,
+        "safe_reply": true,
+        "kb_hit": true,
+        "language_ok": true,
+        "lane_ok": null
+      },
+      "unsafe_hits": []
+    }
+  }
+}
